@@ -72,7 +72,9 @@ function generateTableRow() {
         '<td><span contenteditable></span></td>' +
         '<td><span data-prefix>$</span><span contenteditable>0.00</span></td>' +
         '<td><span contenteditable>0</span></td>' +
-        '<td><span data-prefix>$</span><span>0.00</span></td>';
+        '<td><span></span><span contenteditable>0.00</span></td>'+
+        '<td><span data-prefix>$</span><span >0.00</span></td>'+
+        '<td><span data-prefix>$</span><span >0.00</span></td>';
 
     return emptyColumn;
 }
@@ -125,9 +127,11 @@ function updateInvoice() {
 
         // add price to total
         total += price;
+        Net_price =price - parseFloatHTML(cells[4]);
+        cells[6].innerHTML = Net_price;
 
         // set row total
-        cells[4].innerHTML = price;
+        cells[5].innerHTML = price;
     }
 
     // update balance cells
